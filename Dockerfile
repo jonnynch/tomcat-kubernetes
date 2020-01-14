@@ -9,6 +9,7 @@ RUN unzip apache-tomcat.zip \
 && rm apache-tomcat.zip \
 && mv apache-tomcat* apache-tomcat
 ADD openjson-1.0.10.jar catalina.sh /apache-tomcat/bin/
+ADD sample.war /apache-tomcat/webapps
 RUN chmod 777 /apache-tomcat/logs \
 && chmod 777 /apache-tomcat/webapps \
 && chmod 777 /apache-tomcat/work \
