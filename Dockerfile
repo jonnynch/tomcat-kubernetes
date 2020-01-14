@@ -3,7 +3,7 @@ LABEL Description="Tomcat image to test tomcat-in-the-cloud. standalone tomcat v
 VOLUME /tmp
 USER root
 ARG registry_id
-ENV OPENSHIFT_KUBE_PING_NAMESPACE $registry_id \
+ENV OPENSHIFT_KUBE_PING_NAMESPACE="$registry_id" \
     JAVA_OPTS=""
 ADD target/dependency/tomcat.zip apache-tomcat.zip
 RUN unzip apache-tomcat.zip \
