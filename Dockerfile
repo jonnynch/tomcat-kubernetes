@@ -5,7 +5,9 @@ USER root
 ENV OPENSHIFT_KUBE_PING_NAMESPACE="tomcat-in-the-cloud" \
     JAVA_OPTS=""
 ADD target/dependency/tomcat.zip apache-tomcat.zip
-RUN unzip apache-tomcat.zip \
+RUN apt-get update -y || true\
+&& apt-get install -y unzip \
+&& unzip apache-tomcat.zip \
 && rm apache-tomcat.zip \
 && mv apache-tomcat* apache-tomcat
 ADD openjson-1.0.10.jar catalina.sh /apache-tomcat/bin/
