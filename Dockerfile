@@ -22,6 +22,6 @@ RUN chmod 777 /apache-tomcat/logs \
 && chmod 777 /apache-tomcat/temp \
 && sh -c 'chmod a+x bin/*.sh'
 
-ADD server.xml /apache-tomcat/conf
+ADD server.xml logging.properties /apache-tomcat/conf
 
 ENTRYPOINT [ "sh", "-c", "bin/startup.sh" ]
