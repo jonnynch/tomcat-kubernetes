@@ -17,7 +17,7 @@
             <groupId>org.apache.tomcat</groupId>
             <artifactId>tomcat</artifactId>
             <version>${tomcat.version}</version>
-            <type>zip</type>
+            <type>tar.gz</type>
         </dependency>
     </dependencies>
 
@@ -49,10 +49,10 @@
             <artifactItem>
               <groupId>org.apache.tomcat</groupId>
               <artifactId>tomcat</artifactId>
-			  <version>${tomcat.version}</version>
-              <type>zip</type>
+              <version>${tomcat.version}</version>
+              <type>tar.gz</type>
               <overWrite>true</overWrite>
-              <destFileName>tomcat.zip</destFileName>
+              <destFileName>tomcat.tar.gz</destFileName>
             </artifactItem>
           </artifactItems>
         </configuration>
