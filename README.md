@@ -3,8 +3,7 @@ What is needed to create a Tomcat Docker image to run a cluster of tomcats in Ku
 
 Get the latest tomcat snapshot of tomcat:
 ```
-mvn clean
-mvn install
+mvn clean install
 ```
 Build the Docker image:
 ```
@@ -37,7 +36,7 @@ oc policy add-role-to-user view system:serviceaccount:tomcat-in-the-cloud:defaul
 ```
 Create the first pod
 ```
-kubectl run tomcat-in-the-cloud --image=docker.io/jfclere/tomcat-in-the-cloud --port=8080
+kubectl run tomcat-in-the-cloud --image=docker.io/<user>/tomcat-in-the-cloud --port=8080
 ```
 Scale it do 2 replicas
 ```
