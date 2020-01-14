@@ -36,15 +36,16 @@ oc policy add-role-to-user view system:serviceaccount:tomcat-in-the-cloud:defaul
 ```
 Create the first pod
 ```
-kubectl run tomcat-in-the-cloud --image=docker.io/<user>/tomcat-in-the-cloud --port=8080
+oc new-app --name tomcat-in-the-cloud --docker-image="<user>/tomcat-in-the-cloud:latest"
 ```
 Scale it do 2 replicas
 ```
-kubectl scale deployment tomcat-in-the-cloud --replicas=2
+oc scale --replicas=2 dc/tomcat-in-the-cloud
 ```
 Expose the deployment
 ```
-kubectl expose deployment tomcat-in-the-cloud --type=LoadBalancer --port 80 --target-port 8080
+oc expose dc/tomcat-in-the-cloud --port=8080
+oc expose service/tomcat-in-the-cloud
 ```
 Use the consle to create the route and change it to make it not sticky and session less edit the yalm and save it, Something like
 ```
