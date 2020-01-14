@@ -137,9 +137,10 @@
           <Channel className="org.apache.catalina.tribes.group.GroupChannel">
               <Membership className="org.apache.catalina.tribes.membership.cloud.CloudMembershipService"/>
           </Channel>
-          <Valve className="org.apache.catalina.ha.tcp.ReplicationValve"
-                 filter=""/>
+          <Valve className="org.apache.catalina.ha.tcp.ReplicationValve" filter=""/>
           <Valve className="org.apache.catalina.ha.session.JvmRouteBinderValve"/>
+          <ClusterListener className="org.apache.catalina.ha.session.JvmRouteSessionIDBinderListener"/>
+          <ClusterListener className="org.apache.catalina.ha.session.ClusterSessionListener"/>
       </Cluster>
 
       <!-- Use the LockOutRealm to prevent attempts to guess user passwords

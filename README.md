@@ -46,19 +46,9 @@ Expose the deployment
 ```
 oc expose dc/tomcat-in-the-cloud --port=8080
 oc expose service/tomcat-in-the-cloud
+#optional
+oc annotate route tomcat-in-the-cloud router.openshift.io/cookie_name="mycookie"
 ```
-Use the consle to create the route and change it to make it not sticky and session less edit the yalm and save it, Something like
-```
-apiVersion: route.openshift.io/v1
-kind: Route
-metadata:
-  annotations:
-    haproxy.router.openshift.io/balance: roundrobin
-    haproxy.router.openshift.io/disable_cookies: 'true'
-    openshift.io/host.generated: 'true'
-    ...
-```
-The route will be modified when you save it.
 To access to the tomcat use the hostname something like
 http://tomcat-in-the-cloud-tomcat-in-the-cloud.193b.starter-ca-central-1.openshiftapps.com/
 
