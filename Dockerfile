@@ -2,8 +2,7 @@ FROM openjdk:8-jre-alpine
 LABEL Description="Tomcat image to test tomcat-in-the-cloud. standalone tomcat version"
 VOLUME /tmp
 USER root
-ARG registry_id
-ENV OPENSHIFT_KUBE_PING_NAMESPACE="$registry_id" \
+ENV OPENSHIFT_KUBE_PING_NAMESPACE="tomcat-to-the-cloud" \
     JAVA_OPTS=""
 ADD target/dependency/tomcat.zip apache-tomcat.zip
 RUN unzip apache-tomcat.zip \
