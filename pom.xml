@@ -48,6 +48,7 @@
             <artifactItem>
               <groupId>org.apache.tomcat</groupId>
               <artifactId>tomcat</artifactId>
+			  <version>${tomcat.version}</version>
               <type>zip</type>
               <overWrite>true</overWrite>
               <destFileName>tomcat.zip</destFileName>
