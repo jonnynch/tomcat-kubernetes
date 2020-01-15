@@ -1,4 +1,4 @@
-FROM openjdk:8-jre-alpine
+FROM adoptopenjdk:8-jdk-hotspot
 LABEL Description="Tomcat image to test tomcat-in-the-cloud. standalone tomcat version"
 VOLUME /tmp
 USER root
