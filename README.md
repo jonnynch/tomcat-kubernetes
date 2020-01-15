@@ -7,7 +7,8 @@ mvn clean install
 ```
 Build the Docker image:
 ```
-docker build -t docker.io/<user>/tomcat-in-the-cloud --build-arg registry_id=tomcat-in-the-cloud .
+
+docker build -t docker.io/<user>/tomcat-in-the-cloud .
 ```
 or (to add your sample.war webapp to my existing image).
 ```
