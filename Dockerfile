@@ -1,7 +1,7 @@
 FROM adoptopenjdk:8-jre-hotspot 
 LABEL Description="Tomcat image to test tomcat-in-the-cloud. standalone tomcat version" 
 VOLUME /tmp 
-ENV OPENSHIFT_KUBE_PING_NAMESPACE="tomcat-in-the-cloud" \ 
+ENV OPENSHIFT_KUBE_PING_NAMESPACE="jon" \ 
     JAVA_OPTS="" 
 ADD target/dependency/tomcat.tar.gz /
 RUN mv apache-tomcat* apache-tomcat 
