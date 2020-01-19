@@ -8,16 +8,13 @@ mvn clean install
 Build the Docker image:
 ```
 
-docker build -t docker.io/<user>/tomcat-in-the-cloud .
+# update Dockerfile for the project(namespace) to be
+docker build -t tomcat-in-the-cloud .
 ```
-or (to add your sample.war webapp to my existing image).
-```
-docker build -f Dockerfile.webapp -t docker.io/<user>/tomcat-in-the-cloud-war --build-arg war=/sample.war --build-arg registry_id=tomcat-in-the-cloud .
-```
-Push the image on docker (use tomcat-in-the-cloud-war for the war one)
+Tag the image on docker
 ```
 docker login
-docker push <user>/tomcat-in-the-cloud
+docker tag tomcat-in-the-cloud:latest <public registry exposed url>/<project>/tomcat-in-the-cloud
 ```
 
 For OpenShift
@@ -29,15 +26,19 @@ oc login https://blabla --token=blabla
 ```
 Use the project you have created (in my case I have created tomcat-in-the-cloud)
 ```
-oc project tomcat-in-the-cloud
+oc new-project <project>
+```
+Push the image to registry
+```
+docker push <public registry exposed url>/<project>/tomcat-in-the-cloud
 ```
 Add the user to view the pods
 ```
-oc policy add-role-to-user view system:serviceaccount:tomcat-in-the-cloud:default -n tomcat-in-the-cloud
+oc policy add-role-to-user view system:serviceaccount:<project>:default -n <project>
 ```
 Create the first pod
 ```
-oc new-app --name tomcat-in-the-cloud --docker-image="<user>/tomcat-in-the-cloud:latest"
+oc new-app --name tomcat-in-the-cloud --docker-image image-registry.openshift-image-registry.svc:5000/<project>/tomcat-in-the-cloud --insecure-registry
 ```
 Scale it do 2 replicas
 ```
